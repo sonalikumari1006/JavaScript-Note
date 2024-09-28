@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body style="background-color: #414141; color: aliceblue;">
+        <h2>Amazing image</h2>
+        <div >
+            <ul id="images">
+                <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+                <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+                <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+                <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+                <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+                <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+            </ul>
+       </div>
+    </body>
+    <script>
+
+        // javascript is sequencly program
+        // / attachEvent()
+       // jQuery -- On
+       // Finally, many common server configurations will disallow inline JavaScript, as a security measure.
+       //You should never use the HTML event handler attributes — those are outdated, and using them is bad practice.
+    //=======================================================
+       // what is event propagation?
+       // two types of propagation 
+       // 1) bubbling mode ----> bottom to top (if propagation value= false(bydefault false hota ha))
+       // 2) capture mode ------> top to bottom (if propagation value= true)
+       // For more undersatnding please rafer code
+    //    document.getElementById('images').addEventListener('click',function(e){
+    //       console.log("clicked inside the ul");
+    //    },false)
+
+    //    document.getElementById('owl').addEventListener('click',function(e){
+    //       console.log("owl clicked");
+    //    },false)
+       // if we write false value and click on 'owl' then output of above code 
+       // 1) owl clicked
+       // 2) click inside the ul
+       //=============================================
+    //    document.getElementById('images').addEventListener('click',function(e){
+    //       console.log("clicked inside the ul");
+    //    },true)
+
+    //    document.getElementById('owl').addEventListener('click',function(e){
+    //       console.log("owl clicked");
+    //    },true)
+       // if we write true value and click on 'owl' then output of above code 
+       // 1) click inside the ul 
+       // 2) owl clicked
+      //======================================================
+    //   document.getElementById('images').addEventListener('click',function(e){
+    //       console.log("clicked inside the ul");
+    //    },false)
+
+    //    document.getElementById('owl').addEventListener('click',function(e){
+    //       console.log("owl clicked");
+    //       e.stopPropagation()
+    //    },false)
+       // if we add stoppropagation then bublling mode stop and output are when we are click on "owl"
+       // output: owl clicked
+
+    // ======================================================
+     // stop open google page
+    //  document.getElementById('google').addEventListener('click',function(e){
+    //      e.preventDefault();
+    //      e.stopPropagation();
+    //      console.log("google clicked");
+    //  },false)
+     //=====================================================
+     // if we click on image then image will be remove
+     document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode;
+            removeIt.remove()
+        }
+        
+        // alse use
+        // removeIt.parentNode.removeChild(removeIt)
+     })
+
+      //=================================================
+         // Note: below topic are important for interview
+       // types, timestamp, defaultPrevent 
+       // target, to Element, srcElement, currentTarget
+       // clientX, clientY, screenX, screenY
+       // altkey, ctrlkey, shiftkey, keyCode  
+       
+       // ============= type event properties ===========
+       // 1) Return the type of event that was triggered event.(like if click by the mouse then mouseup and mousedown event occurs)
+       // and if click by the key then keyup and keydown event occurs
+       // example ---- var x=event.type;
+       // ================ timeStamp event Properties ==========
+       // 1) The timeStamp event property returns the number of milliseconds from the document was finished loading until the specific event was created.
+       // Syntax -----> let n= event.timeStamp;
+       //================= defaultPrevent event event ===========
+       // 1) change the default behaviour of element
+       // 2) example---> event.defaultPrevented
+       // =============== target event Properties==================
+       // 1) Get the element where the event occurred
+       // 2) example ---> const element=event.target;
+       // Get the name of the element where the event occurred
+       // example ----> event.target.tagName;
+       //================ toElement ==============
+       // =============== srcElement ============
+       // Note: This feature is available in Web Workers.
+       //================= currentTarget Event Properties ===================
+       // 1) Get the element that triggered the event
+       // example: const element=event.currentTarget;
+       // ================== clientX event Properties ============
+       // 1) The clientX property returns the horizontal client coordinate of the mouse pointer when a mouse event occurs.
+       // 2) example :-  let x = event.clientX;  // Horizontal
+       // =================== clientY event Properties ================
+       //  1) The clientY property returns virtical client coordinate of the mouse pointer when a mouse event occurs.
+      // 2) example: - let y = event.clientY;  // Vertical
+
+      
+
+
+    </script>
+</html>

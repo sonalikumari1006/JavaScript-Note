@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #534f4f; color:#dff0ff" >
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // trverse tree always if function are call that's why it's not optimized way
+    console.log("hello");
+    function addLanguage(langName){
+        const li=document.createElement('li');
+        li.innerHTML=`${langName}`;
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("C++")
+    // optimised ways
+    function addOptiLanguage(langName){
+       const li=document.createElement('li');
+       li.appendChild(document.createTextNode(langName))
+       document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage('golang')
+    //========== Edit Value ===============
+    const secondLang=document.querySelector("li:nth-child(2)")
+    //secondLang.innerHTML="Monjo"
+    // or
+    const newli=document.createElement('li')
+    newli.textContent="Monjo"
+    secondLang.replaceWith(newli)
+    //===============================
+    const firstLang=document.querySelector('li:first-child')
+    firstLang.outerHTML='<li>TypeScript</li>'
+    
+    // ============ Revome =============
+    const lastLang=document.querySelector('li:last-child')
+    lastLang.remove()
+</script>
+</html>

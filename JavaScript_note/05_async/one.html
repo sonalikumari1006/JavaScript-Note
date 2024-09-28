@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, Welcome to backgroundColor Color chaning Game</h1>
+    <button id="stop">Stop</button>
+    <button id="start">Start</button>
+</body>
+<script>
+    // const sayDate=function(str){
+    //     console.log(str,Date.now());
+    // }
+    //const intervalId=setInterval(sayDate,1000,"hi");
+    // document.querySelector('#start').addEventListener('click',function(){
+    //     setInterval(sayDate,1000,"hi");
+    //     console.log("Start")
+    // })
+    
+    // document.querySelector('#stop').addEventListener('click',function(){
+    //     const setIntervalId=setInterval(sayDate,1000,"hi");
+    //     clearInterval(setIntervalId)
+    //     console.log("STOPPED")
+    // })
+    // ===================Blackground Color cahange ==============================
+    // generate a random color
+    const randomColor=function(){
+        const hex="0123456789ABCDEF"
+        let color='#'
+        for(let i=0;i<6;i++){
+           color+=hex[Math.floor(Math.random()*16)];
+        }
+        return color;
+    };
+    // console.log(randomColor());
+    let intervalId;
+    const startChangingColor=function(){
+        if(!intervalId){
+            intervalId=setInterval(changeBgColor,1000);
+        }
+
+        function changeBgColor(){
+        document.body.style.backgroundColor=randomColor();
+        }
+    };
+    const stopChangingColor=function(){
+        clearInterval(intervalId);
+         intervalId=null;
+    };
+
+    document.querySelector('#stop').addEventListener('click',stopChangingColor)
+    document.querySelector('#start').addEventListener('click',startChangingColor)
+</script>
